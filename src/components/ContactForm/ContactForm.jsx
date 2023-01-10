@@ -60,8 +60,6 @@ class ContactForm extends React.Component {
               required
             />
           </label>
-
-
   
           <button
             className="btn"
@@ -71,9 +69,7 @@ class ContactForm extends React.Component {
             </form>
     </div>
   )
-
-  }
-    
+  }  
 }
 
 export default ContactForm;
