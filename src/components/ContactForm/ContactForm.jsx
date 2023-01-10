@@ -1,8 +1,6 @@
 import React from 'react';
 import css from './ContactForm.module.css';
 
-
-
 class ContactForm extends React.Component {
   state = {
     id: '',
