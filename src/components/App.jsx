@@ -7,7 +7,6 @@ import ContactList from './ContactList/ContactList'
 
 import Section from './Section/Section'
 
-
 class App extends React.Component {
 
   state = {
