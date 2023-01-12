@@ -1,13 +1,15 @@
 import React from 'react';
+import { nanoid } from 'nanoid';
+
 import css from './ContactForm.module.css';
 
 class ContactForm extends React.Component {
   state = {
-    id: '',
     name: '',
     number: '',
-
   }
+
+   nameInputId = nanoid();
 
   handleNameChange = event => {
     const { name, value } = event.currentTarget
@@ -24,7 +26,6 @@ class ContactForm extends React.Component {
 
   reset = () => {
     this.setState({
-      id: '',
       name: '',
       number: '',
     });
@@ -39,6 +40,7 @@ class ContactForm extends React.Component {
           <label>
             Name
             <input
+              id={this.nameInputId}
               type="text"
               value={this.state.name}
               onChange={this.handleNameChange}
@@ -51,6 +53,7 @@ class ContactForm extends React.Component {
           <label>
             Number
             <input
+              id={this.nameInputId}
               type="tel"
               value={this.state.number}
               onChange={this.handleNameChange}
