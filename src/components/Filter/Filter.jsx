@@ -9,12 +9,10 @@ class Filter extends React.Component {
 
     handleNameChange = event => {
         const { name, value } = event.currentTarget
-        console.log(value);
-        this.setState({ [name]: value });
-        
+        // console.log(value);
+        this.setState({ [name]: value });    
         this.props.onFilter(value)
     }
-    
 
     handleSubmit = event => {
     event.preventDefault();
@@ -28,13 +26,11 @@ class Filter extends React.Component {
       name: '',
       number: '',
     });
-  } 
-
+  }
 
     render() {
 
         return (
-
             <div>
                 <label
                     className={css.label}
@@ -54,11 +50,9 @@ class Filter extends React.Component {
                         required                        
                     />
                 </label>
-
             </div>
         )
     }
 }
-
 
 export default Filter;

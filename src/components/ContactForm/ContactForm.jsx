@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 
 import css from './ContactForm.module.css';
@@ -13,13 +14,13 @@ class ContactForm extends React.Component {
 
   handleNameChange = event => {
     const { name, value } = event.currentTarget
-    console.log(value);
+    // console.log(value);
     this.setState({ [name]: value });
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
+    // console.log(this.state);
     this.props.onSubmit(this.state);
     this.reset();
   }
@@ -76,6 +77,10 @@ class ContactForm extends React.Component {
 }
 
 export default ContactForm;
+
+ContactForm.propTypes = {
+  onContact: PropTypes.func.isRequired,
+};
 
 
 

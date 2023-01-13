@@ -4,7 +4,6 @@ import { nanoid } from 'nanoid'
 import ContactForm from './ContactForm/ContactForm'
 import Filter from './Filter/Filter'
 import ContactList from './ContactList/ContactList'
-
 import Section from './Section/Section'
 
 class App extends React.Component {
@@ -89,9 +88,3 @@ class App extends React.Component {
 };
 
 export default App;
-
-
-
-
-
-
