@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import css from './ContactItem.module.css'
 
 const ContactItem = ({ id, name, number, onDeleteContact }) => {
-    console.log(id);
+    // console.log(id);
     return (
         <li
             className={css.contact}
@@ -22,10 +22,8 @@ const ContactItem = ({ id, name, number, onDeleteContact }) => {
 export default ContactItem;
 
 ContactItem.propTypes = {
-  contact: PropTypes.exact({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired,
-  }),
-  onDeleteContact: PropTypes.func.isRequired,
+    onDeleteContact: PropTypes.func.isRequired,
 };

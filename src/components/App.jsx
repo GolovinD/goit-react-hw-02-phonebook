@@ -16,28 +16,30 @@ class App extends React.Component {
     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
   ],
   filter: '',
-  name: '',
-  number: ''
   }
   
   addContacts = ({ name, number }) => {
+       
+    const { contacts } = this.state;
+
+    if (contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())) {
+      alert(`${name} is already in contacts.`);
+
+      return false
+}
     
     const newContact = {
       id: nanoid(),
       name,
       number,
-      
     };
-    const { contacts } = this.state;
-
-    if (contacts.find(contact => contact.name === name)) {
-      return alert(`${name} is already in contacts.`);
-    }
-    
+      
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newContact],
       
     }));
+
+    return true
   }
 
   findContact =  filter => {
@@ -49,7 +51,7 @@ class App extends React.Component {
 
   getWantedContacts = () => {
     const { contacts, filter } = this.state;
-    console.log(filter);
+    // console.log(filter);
 
     const standarValue = filter.toLowerCase();
     return contacts.filter(contact =>
@@ -63,26 +65,50 @@ class App extends React.Component {
     }));
   };
 
-  render() {
-  const wantedContacts = this.getWantedContacts();
+    handleNameChange = event => {
+        const { name, value } = event.currentTarget
+        // console.log(value);
+        this.setState({ [name]: value });    
+        this.props.onFilter(value)
+    }
 
-   return (
-    <div>
-      <Section title="Phonebook" >     
-        <ContactForm
-          onSubmit={this.addContacts}
-         />
-      </Section>
-      
-       <Section title="Contact" >
-         <Filter onFilter={this.findContact}    
-         />
-         <ContactList
-          contacts={wantedContacts}
-          onDeleteContact={this.deleteContacts}
-         />
-       </Section>
-    </div>
+    handleSubmit = event => {
+    event.preventDefault();
+    console.log(this.state);
+    this.props.onSubmit(this.state);
+    this.reset();
+  }
+
+  reset = () => {
+    this.setState({
+      name: '',
+      number: '',
+    });
+  }
+
+  render() {
+    const { filter } = this.state;
+    const wantedContacts = this.getWantedContacts();
+  
+    return (
+      <div>
+        <Section title="Phonebook" >     
+          <ContactForm
+            onSubmit={this.addContacts}
+           />
+        </Section>
+        
+        <Section title="Contact" >
+          <Filter
+            filterData={filter}  
+            onFilter={this.handleNameChange}    
+          />
+          <ContactList
+            contacts={wantedContacts}
+            onDeleteContact={this.deleteContacts}
+          />
+        </Section>
+      </div>
     );
   }
 };
