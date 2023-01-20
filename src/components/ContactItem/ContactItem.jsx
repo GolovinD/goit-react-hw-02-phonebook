@@ -6,7 +6,7 @@ const ContactItem = ({ id, name, number, onDeleteContact }) => {
     return (
         <li
             className={css.contact}
-            key={id}>
+        >
         <p>
             {name}: <span>{number}</span>
         </p>
