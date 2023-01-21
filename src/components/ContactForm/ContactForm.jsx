@@ -6,7 +6,7 @@ import css from './ContactForm.module.css';
 class ContactForm extends React.Component {
   
   static propTypes = {
-    onContact: PropTypes.func.isRequired,
+    onContact: PropTypes.func,
   };
 
   state = {
